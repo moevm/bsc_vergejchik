@@ -1,0 +1,11 @@
+echo "Task id = ";
+read id;
+iverilog -o test ./tasks/"$id"/solution/solution.v ./tasks/"$id"/test.v;
+vvp test > result;
+rm test;
+iverilog -o test ./tasks/"$id"/response.v ./tasks/"$id"/test.v;
+vvp test > response;
+rm test;
+cmp --silent result response && echo 'SUCCESS' || echo 'FAILURE';
+rm result;
+rm response;
