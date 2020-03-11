@@ -24,3 +24,9 @@
 
 Пример запуска скрипта:  
  ```bash check.sh 1 1s 1s ./solutions/1/solution.v```
+ 
+ ## Docker image:
+Создать docker image:  
+ ```docker image build -t iverilog-check:1.0 .```  
+ Запустить docker:  
+ ```docker run -it iverilogcheck:1.0```
