@@ -29,4 +29,4 @@
 Создать docker image:  
  ```docker image build -t iverilog-check:1.0 .```  
  Запустить docker:  
- ```docker run -it iverilogcheck:1.0```
+ ```docker run --memory 50m --memory-swap 50m -it iverilogcheck:1.0```
