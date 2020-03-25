@@ -54,9 +54,8 @@ module and_test;
 			#period;
 			`assert(sum, 1)
 			
+			$display("SUCCESS");
 		end
-		
-	initial
-		$monitor(a,, b,, c,, sum);
+
 
 endmodule

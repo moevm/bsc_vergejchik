@@ -16,14 +16,6 @@ then
 	exit 1
 fi
 
-#compile and test right solution
-{
-	iverilog -o test ./tasks/"$id"/response.v ./tasks/"$id"/test.v &>/dev/null && vvp test > response && rm test
-} || {
-	echo Couldn\'t check solution
-	exit 1
-}
-
 #compile user solution
 compilation_timeout=$2
 {
@@ -42,7 +34,7 @@ compilation_timeout=$2
 #test user solution
 test_timeout=$3
 {
-	timeout "$test_timeout" iverilog -o test $solution ./tasks/"$id"/test.v &>/dev/null && vvp test > result && rm test
+	timeout "$test_timeout" iverilog -o test $solution ./tasks/"$id"/test.v  && vvp test && rm test
 } || {
 	if [[ $? -eq 124 ]]
 	then	
@@ -52,8 +44,3 @@ test_timeout=$3
 	fi
 	exit 1
 }
-
-#check files equality
-cmp --silent result response && echo 'SUCCESS' || echo 'FAILURE'
-rm result
-rm response
