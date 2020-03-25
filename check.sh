@@ -34,7 +34,7 @@ compilation_timeout=$2
 #test user solution
 test_timeout=$3
 {
-	timeout "$test_timeout" iverilog -o test $solution ./tasks/"$id"/test.v  && vvp test && rm test
+	timeout "$test_timeout" iverilog -o test $solution ./tasks/"$id"/test.v &>/dev/null && vvp test && rm test
 } || {
 	if [[ $? -eq 124 ]]
 	then	
