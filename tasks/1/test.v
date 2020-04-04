@@ -7,9 +7,10 @@ module and_test;
 
 	AND and_inst(a, b, c, sum);
 	
-	`define assert(signal, expected) \
+	`define assert(v1, v2, v3, signal, expected) \
         if (signal !== expected) begin \
             $display("ASSERTION FAILED"); \
+            $display("For input %0b %0b %0b the result should be %0b", v1, v2, v3, expected); \
             $finish; \
         end
 
@@ -20,39 +21,39 @@ module and_test;
 			b = 0;
 			c = 0;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 	
 			c = 1;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 1)
 			
 			b = 1;
 			c = 0;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 
 			c = 1;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 
 			a = 1;
 			b = 0;
 			c = 0;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 			
 			c = 1;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 			
 			b = 1;
 			c = 0;
 			#period;
-			`assert(sum, 0)
+			`assert(a, b, c, sum, 0)
 			
 			c = 1;
 			#period;
-			`assert(sum, 1)
+			`assert(a, b, c, sum, 1)
 			
 			$display("SUCCESS");
 		end

@@ -8,9 +8,10 @@ module test;
 
 	MINORITY minority_inst(a[0], a[1], a[2], y);
 
-	`define assert(signal, expected) \
+	`define assert(v, signal, expected) \
         if (signal !== expected) begin \
             $display("ASSERTION FAILED"); \
+            $display("For input %0b %0b %0b the result should be %0b", v[0], v[1], v[2], expected);\
             $finish; \
         end
 
@@ -21,7 +22,7 @@ module test;
 					a = i;
 					result = a[0] ? (a[1] | a[2]) : (a[1] & a[2]);
 					#period;
-					`assert(result, y)
+					`assert(a, result, y)
 				end
 			$display("SUCCESS");
 		end
