@@ -1,0 +1,12 @@
+{
+    "test-pull": {
+        "SERVER": "http://127.0.0.1:8000",
+        "CONNECTIONS": 1,
+        "AUTH": ["user", "pass"],
+        "HANDLERS": [
+            {
+                "HANDLER": "xqueue_watcher.grader.Grader"
+            }
+        ]
+    }
+}
