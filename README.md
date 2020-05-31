@@ -14,16 +14,29 @@
 - таймаут для компиляции пользовательского решения
 - таймаут для проверки пользовательского решения
 - путь к файлу с пользовательским решением  
+- путь до модуля проверки
 
 Скрипт для переданного id задания запускает тестовый модуль из папки с данным id 
 для пользовательского решения. Тестовый модуль выводит 'ASSERTION FAILED',  
 если какой-то тест не был пройден или 'SUCCESS', если все тесты пройдены.  
 
 Пример запуска скрипта:  
- ```bash check.sh 1 1s 1s ./solutions/1/solution.v```
+ ```bash check.sh 1 1s 1s ./solutions/1/solution.v tasks```
  
+ ## Запуск Xqueue  
+```
+cd xqueue/xqueue
+pip3 install -r requirements.txt
+python3 manage.py migrate
+python3 manage.py runserver
+```
+## Запуск Xqueue-watcher  
+```
+python -m xqueue_watcher -d conf.d/
+```
  ## Docker image:
 Создать docker image:  
- ```docker image build -t iverilog-check:1.0 .```  
+ ```docker image build -t xqueue-watcher:1.0 .```  
  Запустить docker:  
- ```docker run --memory 50m --memory-swap 50m -it iverilogcheck:1.0```
+ ```docker run -v /path --network host -it xqueue-watcher:1.0```  
+path - абсолютный путь до директории, в которой xqueue сохраняет решения
