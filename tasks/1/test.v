@@ -25,7 +25,7 @@ module and_test;
 	
 			c = 1;
 			#period;
-			`assert(a, b, c, sum, 1)
+			`assert(a, b, c, sum, 0)
 			
 			b = 1;
 			c = 0;

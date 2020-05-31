@@ -2,10 +2,11 @@
 
 #check that task with given id exists
 id=$1;
-if [[ ! -d ./tasks/"$id" ]] 
+test=$5
+if [[ ! -d "$test"/"$id" ]] 
 then
 	echo Task with id=$id doesn\'t exist
-	exit 1
+	exit 0
 fi
 
 #check that file with user solution exists
@@ -13,7 +14,7 @@ solution=$4
 if [[ ! -f $solution ]]
 then
 	echo Couldn\'t find file $solution
-	exit 1
+	exit 0
 fi
 
 #compile user solution
@@ -28,19 +29,19 @@ compilation_timeout=$2
 		echo Compilation failed with error: 
 		echo $error
 	fi
-	exit 1
+	exit 0
 }
 
 #test user solution
 test_timeout=$3
 {
-	timeout "$test_timeout" iverilog -o test $solution ./tasks/"$id"/test.v &>/dev/null && vvp test && rm test
+	timeout "$test_timeout" iverilog -o test $solution "$test"/"$id"/test.v &>/dev/null && vvp test && rm test
 } || {
 	if [[ $? -eq 124 ]]
-	then	
+	then	 
 		echo Test failed by timeout in $test_timeout
 	else
 		echo Test failed
 	fi
-	exit 1
+	exit 0
 }
