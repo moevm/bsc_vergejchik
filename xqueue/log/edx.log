@@ -1,8 +1,0 @@
-2020-05-31 10:12:16,299 INFO 5626 [django.utils.autoreload] autoreload.py:597 - Watching for file changes with StatReloader
-2020-05-31 10:13:41,644 INFO 5815 [django.utils.autoreload] autoreload.py:597 - Watching for file changes with StatReloader
-2020-05-31 10:13:47,733 ERROR 5815 [submission_queue.consumer] consumer.py:91 - Could not connect to server at http://0.0.0.0:7800/ in timeout=5.000000
-2020-05-31 10:13:47,739 ERROR 5815 [submission_queue.consumer] consumer.py:91 - Could not connect to server at http://0.0.0.0:7800/ in timeout=5.000000
-2020-05-31 10:13:47,746 ERROR 5815 [submission_queue.consumer] consumer.py:91 - Could not connect to server at http://0.0.0.0:7800/ in timeout=5.000000
-2020-05-31 10:13:47,751 ERROR 5815 [submission_queue.consumer] consumer.py:91 - Could not connect to server at http://0.0.0.0:7800/ in timeout=5.000000
-2020-05-31 10:13:47,755 ERROR 5815 [submission_queue.consumer] consumer.py:91 - Could not connect to server at http://0.0.0.0:7800/ in timeout=5.000000
-2020-05-31 10:13:47,756 ERROR 5815 [submission_queue.consumer] consumer.py:70 - Unable to return to LMS: lms_callback_url: http://0.0.0.0:7800/, payload: {'xqueue_header': '{"lms_callback_url":"http://0.0.0.0:7800/","lms_key":"qwerty","queue_name":"test-pull"}', 'xqueue_body': '{"msg": "SUCCESS", "score": 1}'}, lms_reply: cannot connect to server
